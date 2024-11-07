@@ -1,0 +1,9 @@
+<%- include('partials/header.ejs') %>
+    <body>
+        <div class="container">
+            <% productsItems.forEach(product => { %>
+                <%- include('partials/product-item.ejs', {product}) %>
+            <% }) %>
+        </div>
+    </body>
+</html>
