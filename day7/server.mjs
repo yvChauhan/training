@@ -2,8 +2,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 
-import { mongoConnect } from './database/mongoConnect.mjs';
+import { connectToDB } from './database/mongooseConnect.mjs';
 import { bookRouter } from './routes/bookRoutes.mjs';
+
 
 const port = 8000;
 const host = 'localhost';
@@ -18,9 +19,8 @@ app.use(morgan('dev'));
 
 app.use('/api/v1/books', bookRouter);
 
-
-mongoConnect(() => {
+connectToDB(() => {
     app.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+        console.log(`Server is running on http://${host}:${port}`);
     })
-});
+})

@@ -1,8 +1,9 @@
-import { MongoClient, ObjectId } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 import { BookModel } from "../models/bookModels.mjs";
 
 export const BookController = {
+    
     getAllBooks: (req, res) => {
         BookModel.getAll().then((books) => {
             res.status(200).json(books);
@@ -18,7 +19,13 @@ export const BookController = {
     },
 
     createNewBook: (req, res) => {
-        res.send('Create new book');
+        const { name, publisher, status, genres } = req.body;
+        console.log(name, publisher, status, genres);
+        console.log(req.body)
+        const newBook = new BookModel(name, publisher, status, genres);
+        newBook.save().then((result) => {
+            res.status(201).json(result);
+        });
     },
 
     deleteBookById: (req, res) => {

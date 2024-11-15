@@ -21,6 +21,6 @@ app.use('/api/v1/books', bookRouter);
 
 mongoConnect(() => {
     app.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+        console.log(`Server is running on http://${host}:${port}`);
     })
 });

@@ -12,6 +12,7 @@ export class BookModel {
     }
 
     save() {
+        const db = getDb();
         if (this._id) {
             return db
             .collection("products")
