@@ -2,14 +2,9 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const bookSchema = new Schema({
+const authorSchema = new Schema({
     name: {
         type: String,
-        required: true,
-    },
-    publisher: {
-        type: Schema.ObjectId,
-        ref: 'Author',
         required: true,
     },
     genres: {
@@ -20,6 +15,10 @@ const bookSchema = new Schema({
         type: String,
         required: true,
     },
+    publication: {
+        type: Schema.ObjectId,
+        ref: 'Company',
+    }
 });
 
-export const BookModel = mongoose.model('MangaBooks', bookSchema);
+export const AuthorModel = mongoose.model('Author', authorSchema);
